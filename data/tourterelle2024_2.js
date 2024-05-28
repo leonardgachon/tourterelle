@@ -1,0 +1,1 @@
+var json_tourterelle2024_2 = {"type":"FeatureCollection","name":"tourterelle2024_2","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"Nom_oiseau":"tourterelle turque","contact":null,"Nombre":null,"certitude":null},"geometry":{"type":"Point","coordinates":[4.878079395682195,43.91076949713954]}}]}

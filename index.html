@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 928px;
+            height: 835px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/parcoursstrava_0.js"></script>
+        <script src="data/tourterelle2024_2.js"></script>
+        <script src="data/tourterelle2024wgs84_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[43.90196104285569,4.873283719039526],[43.91506369150821,4.89333121618423]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_parcoursstrava_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cmt'] !== null ? autolinker.link(feature.properties['cmt'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['desc'] !== null ? autolinker.link(feature.properties['desc'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['src'] !== null ? autolinker.link(feature.properties['src'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link1_href'] !== null ? autolinker.link(feature.properties['link1_href'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link1_text'] !== null ? autolinker.link(feature.properties['link1_text'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link1_type'] !== null ? autolinker.link(feature.properties['link1_type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link2_href'] !== null ? autolinker.link(feature.properties['link2_href'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link2_text'] !== null ? autolinker.link(feature.properties['link2_text'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link2_type'] !== null ? autolinker.link(feature.properties['link2_type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['number'] !== null ? autolinker.link(feature.properties['number'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_parcoursstrava_0_0() {
+            return {
+                pane: 'pane_parcoursstrava_0',
+                opacity: 1,
+                color: 'rgba(213,180,60,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_parcoursstrava_0');
+        map.getPane('pane_parcoursstrava_0').style.zIndex = 400;
+        map.getPane('pane_parcoursstrava_0').style['mix-blend-mode'] = 'normal';
+        var layer_parcoursstrava_0 = new L.geoJson(json_parcoursstrava_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_parcoursstrava_0',
+            layerName: 'layer_parcoursstrava_0',
+            pane: 'pane_parcoursstrava_0',
+            onEachFeature: pop_parcoursstrava_0,
+            style: style_parcoursstrava_0_0,
+        });
+        bounds_group.addLayer(layer_parcoursstrava_0);
+        map.addLayer(layer_parcoursstrava_0);
+        map.createPane('pane_lycee_2022_georeftif_1');
+        map.getPane('pane_lycee_2022_georeftif_1').style.zIndex = 401;
+        var img_lycee_2022_georeftif_1 = 'data/lycee_2022_georeftif_1.png';
+        var img_bounds_lycee_2022_georeftif_1 = [[43.90502195378139,4.867011490363534],[43.91662841322215,4.887307481622088]];
+        var layer_lycee_2022_georeftif_1 = new L.imageOverlay(img_lycee_2022_georeftif_1,
+                                              img_bounds_lycee_2022_georeftif_1,
+                                              {pane: 'pane_lycee_2022_georeftif_1'});
+        bounds_group.addLayer(layer_lycee_2022_georeftif_1);
+        map.addLayer(layer_lycee_2022_georeftif_1);
+        function pop_tourterelle2024_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom_oiseau'] !== null ? autolinker.link(feature.properties['Nom_oiseau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['contact'] !== null ? autolinker.link(feature.properties['contact'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['certitude'] !== null ? autolinker.link(feature.properties['certitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_tourterelle2024_2_0() {
+            return {
+                pane: 'pane_tourterelle2024_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,113,141,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_tourterelle2024_2');
+        map.getPane('pane_tourterelle2024_2').style.zIndex = 402;
+        map.getPane('pane_tourterelle2024_2').style['mix-blend-mode'] = 'normal';
+        var layer_tourterelle2024_2 = new L.geoJson(json_tourterelle2024_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_tourterelle2024_2',
+            layerName: 'layer_tourterelle2024_2',
+            pane: 'pane_tourterelle2024_2',
+            onEachFeature: pop_tourterelle2024_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_tourterelle2024_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_tourterelle2024_2);
+        map.addLayer(layer_tourterelle2024_2);
+        function pop_tourterelle2024wgs84_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nom_oiseau'] !== null ? autolinker.link(feature.properties['Nom_oiseau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['contact'] !== null ? autolinker.link(feature.properties['contact'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['certitude'] !== null ? autolinker.link(feature.properties['certitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['latitude'] !== null ? autolinker.link(feature.properties['latitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longitude'] !== null ? autolinker.link(feature.properties['longitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['qrcode'] !== null ? autolinker.link(feature.properties['qrcode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_tourterelle2024wgs84_3_0() {
+            return {
+                pane: 'pane_tourterelle2024wgs84_3',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,90,153,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_tourterelle2024wgs84_3');
+        map.getPane('pane_tourterelle2024wgs84_3').style.zIndex = 403;
+        map.getPane('pane_tourterelle2024wgs84_3').style['mix-blend-mode'] = 'normal';
+        var layer_tourterelle2024wgs84_3 = new L.geoJson(json_tourterelle2024wgs84_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_tourterelle2024wgs84_3',
+            layerName: 'layer_tourterelle2024wgs84_3',
+            pane: 'pane_tourterelle2024wgs84_3',
+            onEachFeature: pop_tourterelle2024wgs84_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_tourterelle2024wgs84_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_tourterelle2024wgs84_3);
+        map.addLayer(layer_tourterelle2024wgs84_3);
+        setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
